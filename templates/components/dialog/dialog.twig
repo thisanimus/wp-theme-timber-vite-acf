@@ -1,0 +1,11 @@
+<dialog class="dialog" id="{{ id }}">
+	<div class="dialog-content">
+		{% block dialogContent %}
+			<h1>Hello World</h1>
+		{% endblock %}
+	</div>
+	<form method="dialog">
+		<button>Close</button>
+	</form>
+</dialog>
+<button data-trigger-dialog="{{ id }}">{{ buttonText }}</button>

@@ -1,0 +1,22 @@
+{% set level = 0 %}
+<nav class="menu">
+	<div class="menu-site-link">
+		<a class="site-link" href="{{site.url}}" title="{{ site.name }}">
+			{{ site_logo }}
+		</a>
+	</div>
+	<button class="menu-toggle" title="Toggle the Menu">
+		<div></div>
+		<div></div>
+		<div></div>
+	</button>
+	<div class="menu-wrapper">
+		{% if menu.header_nav %}
+			{% include 'components/menu-list/menu-list-header.twig' with {items: menu.header_nav.get_items, name: 'menu-header-nav'} %}
+		{% endif %}
+
+		{% if menu.header_buttons %}
+			{% include 'components/menu-list/menu-list-buttons.twig' with {items: menu.header_buttons.get_items, name: 'menu-header-buttons'} %}
+		{% endif %}
+	</div>
+</nav>

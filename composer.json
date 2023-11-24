@@ -1,0 +1,27 @@
+{
+	"name": "deepspacerobots/wordpress-twig-boilerplate",
+	"description": "Starter theme to build a WP theme with Vite, Timber and ACF",
+	"type": "wordpress-theme",
+	"license": "MIT",
+	"authors": [
+		{
+			"email": "andrew@deepspacerobots.com",
+			"name": "thisanimus"
+		}
+	],
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "https://wpackagist.org"
+		}
+	],
+	"require": {
+		"palmiak/timber-acf-wp-blocks": "dev-master",
+		"timber/timber": "^2.0"
+	},
+	"config": {
+		"allow-plugins": {
+			"composer/installers": true
+		}
+	}
+}

@@ -1,0 +1,215 @@
+:root {
+	--menubar-height: 4rem;
+	--menu-transition-timing: 250ms;
+}
+
+.menu {
+	background: var(--color-background-card);
+	display: grid;
+	grid-template-areas: 'title toggle' 'menu menu';
+	align-items: center;
+	font-size: 1rem;
+	grid-template-columns: 1fr var(--menubar-height);
+	grid-template-rows: var(--menubar-height) auto;
+	button {
+		> * {
+			pointer-events: none;
+		}
+	}
+}
+.menu-site-link {
+	grid-area: title;
+}
+button.menu-toggle {
+	all: unset;
+	cursor: pointer;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 1.25rem;
+	width: var(--menubar-height);
+	height: var(--menubar-height);
+	div {
+		width: 1.5rem;
+		height: 2px;
+		background: var(--color-text);
+		transition: 150ms ease-out;
+	}
+}
+
+.menu-wrapper {
+	grid-area: menu;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height var(--menu-transition-timing) ease-out;
+}
+a.site-link {
+	--logo-padding: 0.5rem;
+	--logo-height: calc(var(--menubar-height) - 2 * var(--logo-padding));
+	display: block;
+	padding: var(--logo-padding);
+
+	img,
+	svg {
+		width: 10rem;
+		height: var(--logo-height);
+		object-fit: contain;
+		object-position: 0% 0%;
+	}
+}
+button.menu-link {
+	all: unset;
+	cursor: pointer;
+	display: flex;
+	width: 100%;
+	color: var(--color-text);
+	box-sizing: border-box;
+	display: flex;
+	justify-content: space-between;
+}
+a.menu-link {
+	display: block;
+}
+a.menu-link,
+button.menu-link {
+	line-height: 1;
+	width: 100%;
+	text-align: left;
+	font-weight: 600;
+	padding: 0.5rem 0;
+	//padding: 0.5em;
+	//color: var(--color-text);
+}
+
+.direction-indicator {
+	opacity: 0.5;
+	display: block;
+	text-align: center;
+	flex-shrink: 0;
+	transition: var(--menu-transition-timing) transform ease-out;
+	transform: scaleY(0.4) rotate(180deg);
+}
+
+.menu-list {
+	&[data-level='1'] {
+		.menu-link {
+			//font-size:: 1.25rem;
+		}
+		> li {
+			padding: 0.5rem 1rem;
+			border-top: var(--border-width) solid var(--color-background);
+			&:last-child {
+				border-bottom: var(--border-width) solid var(--color-background);
+			}
+		}
+	}
+	&[data-level='2'] {
+		.menu-link {
+			font-size: 0.9rem;
+			opacity: 0.9;
+		}
+	}
+}
+
+li.menu-list-item {
+	--menu-transition-timing: 150ms;
+	ul.menu-list {
+		overflow: hidden;
+		transition: max-height var(--menu-transition-timing) ease-out;
+	}
+}
+li.menu-list-item[data-state='closed'] {
+	ul.menu-list {
+		max-height: 0;
+	}
+}
+li.menu-list-item[data-state='open'] {
+	ul.menu-list {
+		max-height: var(--submenu-height);
+	}
+	.direction-indicator {
+		transform: scaleY(0.4) rotate(0deg);
+	}
+}
+[data-menu-state='open'] {
+	.menu-wrapper {
+		max-height: var(--menu-height);
+	}
+	button.menu-toggle {
+		div:first-child {
+			transform: rotate(-45deg) translate3d(-0.475rem, 0.475rem, 0);
+		}
+		div:nth-child(2) {
+			transform: scale(0);
+		}
+		div:last-child {
+			transform: rotate(45deg) translate3d(-0.475rem, -0.475rem, 0);
+		}
+	}
+}
+
+@media only screen and (min-width: 800px) {
+	[data-menu-state] {
+		.menu {
+			display: flex;
+			justify-content: space-between;
+			height: var(--menubar-height);
+		}
+		ul.menu-list[data-level='1'] {
+			display: flex;
+			li:last-child {
+				border-bottom: none;
+			}
+		}
+		.menu-list-item {
+			position: relative;
+			//min-width: 8rem;
+		}
+		.menu-list-item ul.menu-list {
+			position: absolute;
+			margin: -1rem;
+			padding: 0 1rem;
+			width: 100%;
+			background: var(--color-background-card);
+			transition: max-height var(--menu-transition-timing) ease-out, padding var(--menu-transition-timing) ease-out;
+		}
+		.menu-wrapper {
+			display: flex;
+			align-items: center;
+			margin-right: var(--space-sm);
+		}
+	}
+
+	.menu-wrapper {
+		overflow: visible;
+		transition: none;
+		max-height: var(--menubar-height);
+	}
+	.menu-header-buttons {
+		margin: 0;
+		z-index: 1;
+		position: relative;
+	}
+	ul.menu-list[data-level='1'] {
+		li {
+			border-top: none;
+		}
+		a.menu-link,
+		button.menu-link {
+			position: relative;
+			z-index: 2;
+		}
+		a.menu-link > .text,
+		button.menu-link > .text {
+			margin-right: 0.5em;
+		}
+	}
+
+	.menu-list-item[data-state='open'] ul.menu-list {
+		padding: 1rem;
+	}
+	button.menu-toggle {
+		display: none;
+	}
+}

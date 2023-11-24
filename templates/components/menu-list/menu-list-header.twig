@@ -1,0 +1,18 @@
+{% set level = level + 1 %}
+<ul class="menu-list {{ name }}" data-level="{{ level }}">
+	{% for item in items %}
+		<li class="menu-list-item">
+			{% if item.link == '#' %}
+				<button class="menu-link">
+					<div class="text">{{ item.title }}</div>
+					<div class="direction-indicator">▲</div>
+				</button>
+				{% else %}
+				<a class="{{ item.classes|join(' ') }} menu-link" target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
+			{% endif %}
+			{% if item.children %}
+				{% include 'components/menu-list/menu-list-header.twig' with {'items': item.children} %}
+			{% endif %}
+		</li>
+	{% endfor %}
+</ul>

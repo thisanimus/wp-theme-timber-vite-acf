@@ -1,0 +1,16 @@
+{% set level = level + 1 %}
+<ul class="{{ name }}" data-level="{{ level }}">
+	{% for item in items %}
+		<li class="{{ item.classes|join(' ') }}">
+			{% if item.link == "#" %}
+				<div class="menu-heading">{{ item.title }}</div>	
+			{% else %}
+				<a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
+			{% endif %}
+			
+			{% if item.children %}
+				{% include "components/menu-list/menu-list.twig" with {'items': item.children} %}
+			{% endif %}
+		</li>
+	{% endfor %}
+</ul>

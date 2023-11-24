@@ -1,0 +1,22 @@
+<div class="footer layout">
+	<div class="footer-layout alignwide">
+		<div>
+			<a class="menu-logo" href="{{site.url}}" rel="home" title="{{site.name}}" aria-label="Home">
+				{{ site_logo }}
+			</a>
+			{% if menu.footer_social %}
+				{% include "components/menu-list/menu-list.twig" with {items: menu.footer_social.get_items, name: 'menu-social-nav'} %}
+			{% endif %}
+		</div>
+
+		{% if menu.footer_nav %}
+			{% include "components/menu-list/menu-list.twig" with {items: menu.footer_nav.get_items, name: 'menu-footer-nav'} %}
+		{% endif %}
+
+		<div class="copyright">
+			&copy; {{"now"|date('Y')}} <a href="{{ privacy_policy_url }}">{{ __('Privacy Policy', 'dsr-reasons-theme') }}</a>
+		</div>
+	</div>
+	
+
+</div>

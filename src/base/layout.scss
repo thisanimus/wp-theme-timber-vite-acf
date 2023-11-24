@@ -1,0 +1,39 @@
+.layout {
+	--outside-margin: 4vw;
+
+	display: grid;
+	grid-template-columns: var(--outside-margin) 1fr var(--outside-margin);
+	grid-auto-rows: min-content;
+	row-gap: var(--space-md);
+	* {
+		min-width: 0%;
+	}
+	> * {
+		grid-column: 2 / 3;
+		&.alignwide {
+			grid-column: 2 / 3;
+		}
+		&.alignfull {
+			grid-column: 1 / -1;
+		}
+	}
+
+	@include md-and-up {
+		--content-center-min: calc(var(--breakpoint-md) - 2 * var(--outside-margin));
+		--lg-md-margin: calc((var(--breakpoint-lg) - var(--breakpoint-sm)) / 2);
+		grid-template-columns:
+			var(--outside-margin)
+			1fr
+			minmax(0, var(--lg-md-margin))
+			minmax(var(--content-center-min), var(--breakpoint-md))
+			minmax(0, var(--lg-md-margin))
+			1fr
+			var(--outside-margin);
+		> * {
+			grid-column: 4;
+			&.alignwide {
+				grid-column: 3 / 6;
+			}
+		}
+	}
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" class="page-{{ page.fileSlug }} {{ tagString }}">
+	<head>
+		<!-- Base meta tags -->
+		<meta charset="{{ site.charset }}">
+		<title>{{ title }}</title>
+		<meta name="language" content="english" />
+		<meta name="description" content="{{ site.description }}" />
+		
+		<!-- Reassure the browser that we are mobile-friendly -->
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1">
+		<meta name="HandheldFriendly" content="True">
+		<meta name="view-transition" content="same-origin" />
+
+		<!-- Favicons 
+		<link rel="icon" href="/assets/favicon/favicon.ico?cachebust=20220519">
+		<link rel="icon" href="/assets/favicon/favicon.svg?cachebust=20220519" type="image/svg+xml" sizes="any">
+		<link rel="apple-touch-icon" href="/assets/favicon/favicon-apple.png?cachebust=20220519">
+		<meta name="theme-color" content="#20242c"> -->
+		
+		{{function('wp_head')}}
+
+		{% if post.meta('css') %}
+			<style>{{ post.meta('css') }}</style>
+		{% endif %}
+
+		{% block head %}
+		{% endblock %}
+
+	</head>
+
+	<body class="{{ body_class }}">
+	
+		{% block alert %}
+			{% for alert in alerts %}
+				{% include 'components/alert/alert.twig' %}
+			{% endfor %}
+		{% endblock %}
+
+		<header id="header" class="header" >
+			{% block header %}
+				{% include 'components/menu/menu.twig' %}
+			{% endblock %}
+		</header>
+
+		<main id="content" class="layout" role="main">
+			{% block content %}
+				Sorry, no content
+			{% endblock %}
+		</main>
+
+		{% block footer %}
+			{% include 'components/footer/footer.twig' %}
+		{% endblock %}
+
+		{{ function('wp_footer') }}
+
+		{% if post.meta('js') %}
+			<script>{{ post.meta('js') }}</script>
+		{% endif %}	
+		
+	</body>
+</html>

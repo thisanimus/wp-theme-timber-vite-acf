@@ -1,0 +1,6 @@
+<div 
+	{% if block.anchor %} id="{{block.anchor}}" {% endif %}
+	class="block-wrapper {{ classes ? classes : '' }}" 
+	data-{{ block.id }}> 
+	{% block block_content %}{% endblock %}
+</div>

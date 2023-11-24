@@ -1,0 +1,22 @@
+{#
+  Title: Testimonial
+  Description: Customer testimonial
+  Category: Custom ACF Blocks
+  Icon: admin-comments
+  Keywords: testimonial quote "customer testimonial"
+  Mode: edit
+#}
+
+{% embed 'components/block-wrapper/block-wrapper.twig' %}
+	{% block block_content %}
+		<blockquote>
+			{% for testimonial in fields.testimonials %}
+				{{ testimonial.quote }}
+				{% if testimonial.cite %}
+				<cite>{{ testimonial.cite }}</cite>
+				{% endif %}
+			{% endfor %}
+		  </blockquote>
+	{% endblock %}
+{% endembed %}
+
