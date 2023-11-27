@@ -73,17 +73,21 @@ This little [plugin](https://palmiak.github.io/timber-acf-wp-blocks/#/) for Timb
 
 **/** The theme root contains the default Wordpress template files (index.php, page.php, post.php, archive.php etc). These behave kind of like models where we get and prepare the data for display in the template, and kind of like controllers because this is where you can specify which Twig template you want to use.
 
-**/lib/** contains grouped functions and definitions that have been abstracted out of functions.php to keep things organized.
+**/dist** contains the compiled styles, scripts, and assets that get loaded on the front-end. Don't edit these, they are automatically created by Vite.
 
-**/vendor/** These are php deps managed by [Composer](https://getcomposer.org/). Timber and Timber ACF WP Blocks live here. Don't edit these files directly, this is like NPM for PHP, these packages are under version control and should stay that way.
+**/lib** contains grouped functions and definitions that have been abstracted out of functions.php to keep things organized.
 
-**/templates/** contains the template files for specific pages/post types along with reusable components.
+**/node_modules** These are js deps managed by npm. Don't edit these files directly, these packages are under version control and should stay that way.
 
-**/src/** contains the catchall for the working files for global styles/scripts. This compiles into /dist.
+**/public** contains static assets that get passed through to /dist. Things like favicons, fonts, etc. **NOTE:** Static files from `/public` referenced in css don't really work. Apparently you can symlink your site root to your template dir, but that seems a little hacky to me, and I'm not sure what the CI/CD story is with that. The place I run into this most often is locally-hosted fonts; I typically just add a fonts.css file with the @font-face declarations alongside the font-files in `/public`, then just enqueue that css file separately.
 
-**/public/** contains static assets that get passed through to /dist. Things like favicons, fonts, etc. **NOTE:** Static files from `/public` referenced in css don't really work. Apparently you can symlink your site root to your template dir, but that seems a little hacky to me, and I'm not sure what the CI/CD story is with that. The place I run into this most often is locally-hosted fonts; I typically just add a fonts.css file with the @font-face declarations alongside the font-files in `/public`, then just enqueue that css file separately.
+**/src** contains the catchall for the working files for global styles/scripts. This compiles into /dist.
 
-**/dist/** contains the compiled styles, scripts, and assets that get loaded on the front-end. Don't edit these, they are automatically created by Vite.
+**/templates** contains the template files for specific pages/post types along with reusable components.
+
+**/vendor** These are php deps managed by [Composer](https://getcomposer.org/). Timber and Timber ACF WP Blocks live here. Don't edit these files directly, this is like NPM for PHP, these packages are under version control and should stay that way.
+
+**.env** This file allows us to assign variables that can be understood by both the node universe and the PHP universe.
 
 ## Components
 
