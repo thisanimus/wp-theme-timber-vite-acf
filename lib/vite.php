@@ -6,6 +6,7 @@ class WPVite {
 	public string $wpEnqueueId;
 	public string $server;
 	public string $entryPoint;
+	public bool $viteIsRunning;
 	public array $jsDeps = [];
 	public function __construct($isChild) {
 		$dir = $isChild ? get_stylesheet_directory() : get_template_directory();
@@ -16,11 +17,12 @@ class WPVite {
 		$this->wpEnqueueId = $env['WP_ENQUEUE_ID'];
 		$this->server = $env['VITE_PROTOCOL'] . '://' . $env['VITE_HOST'] . ':' . $env['VITE_PORT'];
 		$this->entryPoint = $env['VITE_ENTRY_POINT'];
+		$this->viteIsRunning = $env['WP_ENVIRONMENT'] == 'production' ? false : $this->checkServer();
 		$this->init();
 	}
 
 	public function init() {
-		$viteIsRunning = $this->checkServer();
+		$viteIsRunning = $this->viteIsRunning;
 		add_action('wp_enqueue_scripts', function () use ($viteIsRunning) {
 			if ($viteIsRunning === true) {
 				$this->viteDevAssets();
