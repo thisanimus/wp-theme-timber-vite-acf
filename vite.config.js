@@ -1,6 +1,7 @@
 import ViteRestart from 'vite-plugin-restart';
 import { defineConfig } from 'vite';
 import mkcert from 'vite-plugin-mkcert';
+import path from 'path';
 import 'dotenv/config';
 
 export default defineConfig(({ command }) => {
@@ -18,9 +19,8 @@ export default defineConfig(({ command }) => {
 		css: {
 			preprocessorOptions: {
 				scss: {
-					// example : additionalData: `@import "./src/design/styles/variables";`
-					// dont need include file extend .scss
-					additionalData: `@import "./src/base/functions.scss";`,
+					additionalData: `@use '@/base/functions.scss' as *;`,
+					api: 'modern-compiler',
 				},
 			},
 		},
@@ -30,6 +30,11 @@ export default defineConfig(({ command }) => {
 				reload: ['/**/*.html', '/**/*.twig', '/**/*.php', '!vendor/**/*', '!node_modules/**/*'],
 			}),
 		],
+		resolve: {
+			alias: {
+				'@': path.resolve(__dirname, 'src'),
+			},
+		},
 		server: {
 			https: process.env.VITE_PROTOCOL === 'https',
 			cors: true,
