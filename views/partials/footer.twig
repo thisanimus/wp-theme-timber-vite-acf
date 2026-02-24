@@ -1,0 +1,20 @@
+<footer class="footer">
+	<div class="footer-top layout">
+		<a class="linked-in" href="#">LinkedIn</a>
+		<a class="logo" href="{{ site.url }}" title="{{ site.name }}">
+			<img src="{{ site.theme.link }}/assets/img/logo.png" alt="">
+		</a>
+	</div>
+	<div class="footer-bottom layout">
+		<div class="copyright">
+			Copyright
+			{{ 'now'|date('Y') }}
+		</div>
+
+		<nav id="nav-footer" class="nav-footer">
+			{% include 'partials/menu.twig' with {items: menu.footer_nav.get_items} %}
+		</nav>
+	</div>
+
+
+</footer>

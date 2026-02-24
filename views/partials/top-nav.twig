@@ -1,0 +1,16 @@
+<header class="top-nav layout">
+	<div class="top-nav-layout">
+		<a class="logo" href="{{ site.url }}" title="{{ site.name }}">
+			<img src="{{ site.theme.link }}/assets/img/logo.png" alt="">
+		</a>
+
+		<nav id="nav-main" class="nav-main">
+			{% include 'partials/menu.twig' with {items: menu.header_nav.get_items} %}
+		</nav>
+
+		<nav id="nav-buttons" class="nav-buttons">
+			{% include 'partials/menu.twig' with {items: menu.header_buttons.get_items} %}
+		</nav>
+		<button title="toggle nav">Nav toggele</button>
+	</div>
+</header>

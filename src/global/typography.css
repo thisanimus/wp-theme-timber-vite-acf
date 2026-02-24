@@ -1,0 +1,136 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+	font-weight: 800;
+	line-height: 1.1;
+	margin: 0 0 1rem 0;
+}
+
+h1 {
+	font-size: 2.5rem;
+	line-height: 1;
+}
+h2 {
+	font-size: 1.7rem;
+	position: relative;
+}
+h3 {
+	font-size: 1.3rem;
+}
+h4 {
+	font-size: 1.2rem;
+}
+h5 {
+	font-size: 1rem;
+}
+h6 {
+	font-size: 0.9rem;
+}
+
+p {
+	overflow-wrap: break-word;
+	margin: 0 0 0.75em 0;
+	max-width: 80ch;
+}
+
+em {
+	font-style: italic;
+}
+
+a {
+	text-decoration: none;
+	font-weight: 600;
+	color: var(--color-link-default);
+}
+a:where(:hover, :focus) {
+	color: var(--color-link-hover);
+}
+
+:where(p, ul:not([class]), ol:not([class]), pre, code, blockquote, img, video, iframe) + :is(h1, h2, h3, h4, h5, h6) {
+	margin-top: var(--space-md);
+}
+mark {
+	background: #fff176;
+}
+
+address {
+	font-style: normal;
+}
+
+.hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+ul,
+ol {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul:not([class]) {
+	list-style-type: disc;
+	margin: 0 0 var(--space-sm) 1.125rem;
+	margin-left: 1.125rem;
+	line-height: 1.3;
+}
+ul:not([class]) > li > ul {
+	list-style-type: circle;
+}
+ul:not([class]) > li > ul > li > ul {
+	list-style-type: square;
+}
+ol:not([class]) {
+	margin: 0 0 var(--space-sm) 1.75rem;
+	padding-left: 0;
+	list-style: decimal;
+}
+:where(ul:not([class]), ol:not([class])) > li {
+	padding-left: 0rem;
+	margin-bottom: 0.5rem;
+}
+
+ul:not([class]) ul,
+ol:not([class]) ul {
+	margin: 1rem 0 1rem 1rem;
+}
+
+ul:not([class]) ol,
+ol:not([class]) ol {
+	margin: 1rem 0 1rem 2rem;
+}
+
+hr {
+	border: none;
+	height: var(--border-width);
+	background: var(--color-ui-muted);
+	width: 100%;
+	margin: var(--space-md) 0;
+}
+blockquote {
+	background: var(--color-background-intense);
+	border-left: var(--border-width) solid var(--color-ui);
+	padding: var(--space-sm);
+	margin: 0 0 var(--space-md) 0;
+}
+blockquote:not(:first-child) {
+	margin: var(--space-md) 0;
+}
+blockquote > :first-child {
+	padding-top: 0;
+	margin-top: 0;
+}
+blockquote > :last-child {
+	padding-bottom: 0;
+	margin-bottom: 0;
+}

@@ -1,0 +1,46 @@
+.button,
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+	--button-background: var(--color-primary);
+	--button-color: var(--color-light);
+	background-color: var(--button-background);
+	color: var(--button-color);
+	border: var(--border-width) solid var(--button-background);
+	border-radius: var(--border-radius);
+	cursor: pointer;
+	display: inline-block;
+	text-decoration: none;
+	white-space: nowrap;
+	font: 600 0.8rem/1 var(--font-sans);
+	height: 2rem;
+	padding: 0.5rem 1rem;
+	transition: background-color 150ms, border-color 150ms;
+}
+a.button:where(:hover, :focus) {
+	color: var(--button-color) !important;
+}
+:is(.button, button, [type='button'], [type='reset'], [type='submit']):where(:hover, :focus) {
+	--button-background: var(--color-primary-intense);
+}
+
+:is(.button, button, [type='button'], [type='reset'], [type='submit']):where([disabled]) {
+	filter: saturate(0);
+	pointer-events: none;
+	cursor: not-allowed;
+}
+
+.button-accent {
+	--button-color: var(--color-dark);
+	--button-background: var(--color-accent);
+}
+.button-accent:where(:hover, :focus) {
+	--button-background: var(--color-accent-intense);
+}
+.button-group {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin: var(--space-sm) 0;
+}

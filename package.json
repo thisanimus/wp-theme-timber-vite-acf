@@ -10,14 +10,8 @@
 		"build": "vite build"
 	},
 	"license": "MIT",
-	"dependencies": {
-		"baselayer.css": "latest",
-		"js-cookie": "latest"
-	},
 	"devDependencies": {
-		"dotenv": "latest",
-		"sass": "latest",
-		"vite": "latest",
+		"vite": "npm:rolldown-vite@latest",
 		"vite-plugin-mkcert": "latest",
 		"vite-plugin-restart": "latest"
 	}

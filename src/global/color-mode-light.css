@@ -1,0 +1,23 @@
+:root {
+	color-scheme: light;
+	--color-text-muted: #5c6770;
+	--color-text: var(--color-dark);
+	--color-text-intense: var(--color-dark-intentse);
+
+	--color-ui-intense: #9da7af;
+	--color-ui: #b9c0c6;
+	--color-ui-muted: #d6dade;
+
+	--color-background-muted: var(--color-light-muted);
+	--color-background: var(--color-light);
+	--color-background-intense: var(--color-light-intense);
+	--color-background-card: var(--color-light-intense);
+
+	--color-link-default: #1565c0;
+	--color-link-hover: #0d47a1;
+	--color-link-visited: #7b1fa2;
+
+	--color-shadow-intense: rgba(0, 0, 0, 0.2);
+	--color-shadow: rgba(0, 0, 0, 0.1);
+	--color-shadow-muted: rgba(0, 0, 0, 0.05);
+}

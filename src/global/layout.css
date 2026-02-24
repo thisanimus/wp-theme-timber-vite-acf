@@ -1,0 +1,26 @@
+.layout {
+	/*
+    The setup for the layout is declared 
+    as custom props on .layout
+    The measurements for the slider
+    are computed from these values via 
+    calc(), min(), max().
+  */
+	--max-width: 56rem;
+	--min-outside-margin: 2rem;
+
+	/* --layout-margin: the outside part of our max-width container */
+	--layout-margin: max(((100vw - var(--max-width))/2), var(--min-outside-margin));
+
+	/* --container: the width of our max-width container */
+	--container: calc(100vw - (2 * var(--layout-margin)));
+
+	display: grid;
+	grid-template-columns: var(--layout-margin) 1fr var(--layout-margin);
+	> * {
+		grid-column: 2;
+	}
+	> .fullwidth {
+		grid-column: 1/-1;
+	}
+}

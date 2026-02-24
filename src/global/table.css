@@ -1,0 +1,38 @@
+table {
+	border-collapse: collapse;
+	width: 100%;
+	font-size: 0.8rem;
+}
+
+table caption {
+	text-align: left;
+	font-size: 1rem;
+	font-weight: 600;
+}
+
+td,
+th {
+	text-align: left;
+	padding: 0.25rem 0.5rem;
+	vertical-align: top;
+	word-wrap: break-word;
+}
+
+thead {
+	border-bottom: var(--border-width) solid var(--color-background-muted);
+}
+thead th {
+	vertical-align: bottom;
+}
+
+tfoot {
+	border-top: var(--border-width) solid var(--color-background-muted);
+}
+
+tbody tr:nth-child(odd) {
+	background-color: var(--color-background-intense);
+}
+
+tbody tr:nth-child(even) {
+	background-color: var(--color-background);
+}

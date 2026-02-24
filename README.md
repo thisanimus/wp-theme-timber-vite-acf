@@ -22,11 +22,10 @@ The charm of web development is how flexible it is, and there's no reason to und
 
 Notate any custom php functions with a [DocBlock comment](https://make.wordpress.org/core/handbook/best-practices/inline-documentation-standards/php/#docblock-formatting) so that others can understand at a glance what it does, what params it expects, and what it returns.
 
-### SCSS
+### CSS
 
-By default, any scss you write in `/templates/*/**` will automatically be imported.
+By default, any css you write in `/templates/*/**` will automatically be imported.
 **Favor readability and simplicity and portability over specificity**. When possible, avoid deeply-nested rules; they are tightly coupled to a specific HTML structure, and make it more difficult to modify, extend, and reuse components.
-**Favor CSS Custom Props over SASS vars.** [CSS custom props](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) are more flexible, extensible, and they still exist after build time.
 
 ### JS
 
@@ -83,7 +82,7 @@ This little [plugin](https://palmiak.github.io/timber-acf-wp-blocks/#/) for Timb
 
 **/src** contains the catchall for the working files for global styles/scripts. This compiles into /dist.
 
-**/templates** contains the template files for specific pages/post types along with reusable components.
+**/views** contains the template files for specific pages/post types along with reusable components.
 
 **/vendor** These are php deps managed by [Composer](https://getcomposer.org/). Timber and Timber ACF WP Blocks live here. Don't edit these files directly, this is like NPM for PHP, these packages are under version control and should stay that way.
 

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html {{ site.language_attributes }}>
+	<meta charset="{{ site.charset }}"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel="author" href="{{ site.theme.link }}/humans.txt"/>
+	<link rel="profile" href="http://gmpg.org/xfn/11"/>
+	{% do action('get_header') %}
+	{{ function('wp_head') }}
+
+	<body class="{{ body_class }}">
+		{{ function('wp_body_open') }}
+		{% include 'partials/top-nav.twig' %}
+
+		<main id="content">
+			{% block content %}
+				Sorry, no content
+			{% endblock %}
+		</main>
+
+		{% include 'partials/footer.twig' %}
+		{{ function('wp_footer') }}
+		{% do action('get_footer') %}
+	</body>
+</html>

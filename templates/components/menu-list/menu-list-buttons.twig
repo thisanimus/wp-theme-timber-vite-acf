@@ -1,7 +1,0 @@
-{% if items|length %}
-	<div class="{{ name }} button-group">
-		{% for item in items %}
-			<a class="button {{ item.classes|join(' ') }}" target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
-		{% endfor %}
-	</div>
-{% endif %}

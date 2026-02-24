@@ -1,0 +1,9 @@
+@import './global/base.css';
+@import './global/layout.css';
+@import './global/buttons.css';
+@import './global/color-mode-light.css';
+@import './global/dialog.css';
+@import './global/forms.css';
+@import './global/media.css';
+@import './global/table.css';
+@import './global/typography.css';

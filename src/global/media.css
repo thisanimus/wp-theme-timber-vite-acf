@@ -1,0 +1,14 @@
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+img {
+	width: 100%;
+	height: auto;
+	display: block;
+}

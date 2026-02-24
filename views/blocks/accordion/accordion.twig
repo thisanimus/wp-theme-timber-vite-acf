@@ -1,0 +1,21 @@
+{#
+  Title: AFS - Accordion
+  Description: accordion set
+  Category: custom-acf-blocks
+  Icon: plus
+  Keywords: accordion, details, disclosure
+  Mode: edit
+#}
+
+{% embed 'blocks/block-wrapper/block-wrapper.twig' %}
+	{% block block_content  %}
+
+		{% for accordion in fields.accordions %}
+			<details name="{{ block.id }}">
+				<summary>{{ accordion.summary }}</summary>
+				{{ accordion.details }}
+			</details>
+		{% endfor %}
+
+	{% endblock %}
+{% endembed %}

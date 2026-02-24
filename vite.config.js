@@ -1,26 +1,19 @@
 import ViteRestart from 'vite-plugin-restart';
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import mkcert from 'vite-plugin-mkcert';
 import path from 'path';
-import 'dotenv/config';
 
-export default defineConfig(({ command }) => {
+export default defineConfig(({ command, mode }) => {
+	const env = loadEnv(mode, process.cwd());
+
 	return {
-		base: command === 'serve' ? '/' : `/${process.env.VITE_OUTPUT_DIR}/`,
+		base: command === 'serve' ? '/' : `/${env.VITE_OUTPUT_DIR}/`,
 		build: {
 			manifest: true,
-			outDir: process.env.VITE_OUTPUT_DIR,
-			rollupOptions: {
+			outDir: env.VITE_OUTPUT_DIR,
+			rolldownOptions: {
 				input: {
-					app: process.env.VITE_ENTRY_POINT,
-				},
-			},
-		},
-		css: {
-			preprocessorOptions: {
-				scss: {
-					additionalData: `@use '@/base/functions.scss' as *;`,
-					api: 'modern-compiler',
+					app: env.VITE_ENTRY_POINT,
 				},
 			},
 		},
@@ -36,16 +29,16 @@ export default defineConfig(({ command }) => {
 			},
 		},
 		server: {
-			https: process.env.VITE_PROTOCOL === 'https',
+			https: env.VITE_PROTOCOL === 'https',
 			cors: true,
 			fs: {
 				strict: false,
 			},
-			origin: `http://${process.env.VITE_HOST}:${process.env.VITE_PORT}`,
-			port: parseInt(process.env.VITE_PORT),
+			origin: `http://${env.VITE_HOST}:${env.VITE_PORT}`,
+			port: parseInt(env.VITE_PORT),
 			strictPort: true,
 			hmr: {
-				host: process.env.VITE_HOST,
+				host: env.VITE_HOST,
 			},
 		},
 	};

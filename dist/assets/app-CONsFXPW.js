@@ -1,0 +1,1 @@
+var e=e=>{console.log(e)},t=document.querySelector(`.top-nav`);t&&e(t);

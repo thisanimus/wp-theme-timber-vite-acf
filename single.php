@@ -1,29 +1,20 @@
 <?php
-
 /**
  * The Template for displaying all single posts
  *
- * Methods for TimberHelper can be found in the /lib sub-directory
- *
- * @package  WordPress
- * @subpackage  Timber
- * @since    Timber 0.1
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  */
+
+namespace App;
 
 use Timber\Timber;
 
-$context         = Timber::context();
-$timber_post     = Timber::get_post();
-$context['post'] = $timber_post;
+$context   = Timber::context();
+$post      = $context['post'];
+$templates = [ 'templates/single-' . $post->post_type . '.twig', 'templates/single.twig' ];
 
-if (post_password_required($timber_post->ID)) {
-	Timber::render('pages/single-password/single-password.twig', $context);
-} else {
-	$templates = [
-		'pages/single-' . $timber_post->ID . '/single-' . $timber_post->ID . '.twig',
-		'pages/single-' . $timber_post->post_type . '/single-' . $timber_post->post_type . '.twig',
-		'pages/single-' . $timber_post->slug . '/single-' . $timber_post->slug . '.twig',
-		'pages/single/single.twig'
-	];
-	Timber::render($templates, $context);
+if ( post_password_required( $post->ID ) ) {
+	$templates = 'templates/single-password.twig';
 }
+
+Timber::render( $templates, $context );

@@ -1,0 +1,5 @@
+<div {{ block.anchor ? 'id="'~ block.anchor ~'"' : '' }} class="block-wrapper layout {{ classes ? classes : '' }}" data-block-id="{{ block.id }}">
+	{% block block_content %}
+		{# Block Content #}
+	{% endblock %}
+</div>
